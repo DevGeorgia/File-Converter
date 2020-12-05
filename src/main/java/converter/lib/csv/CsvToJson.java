@@ -3,28 +3,27 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package fcl.convert.csv;
+package converter.lib.csv;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import org.apache.commons.io.FilenameUtils;
 import org.json.simple.JSONArray;
 
 /**
- *
- * @author GeorgiaLR
+ * 
  */
-public class Csv2Json {
+public class CsvToJson {
 
-    public static void convertDatas(String csvFile, String lsSeparator) {
+    public static String convertCsvToJson(String csvPath, String lsSeparator) {
 
-        String csvFileNameExt = FilenameUtils.getName(csvFile);
-        String csvPath = FilenameUtils.getPath(csvFile);
+        String csvFileNameExt = FilenameUtils.getName(csvPath);
         String csvFileName = FilenameUtils.removeExtension(csvFileNameExt);
+
+        File csvFile = new File(csvPath);
+        String csvDirectory = csvFile.getParent();
+        System.out.println("csvDirectory : " + csvDirectory);
         
         JSONArray objetArray = new JSONArray();
 
@@ -56,11 +55,14 @@ public class Csv2Json {
             System.err.println("Erreur de fichier : " + e.getMessage());
         }
 
-        try (FileWriter fwTableau = new FileWriter(csvPath+csvFileName+".json")) {
+        try (FileWriter fwTableau = new FileWriter(csvDirectory + File.separator + csvFileName + ".json")) {
             fwTableau.write(objetArray.toString());
         } catch (Exception e) {
             System.err.println(e.getMessage());
         }
+
+        String newFilePath = csvDirectory + File.separator + csvFileName + ".json";
+        return newFilePath;
     }
 
 }

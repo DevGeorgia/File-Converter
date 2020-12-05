@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package fcl.convert.csv;
+package converter.lib.csv;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -21,25 +21,28 @@ import org.jdom2.output.XMLOutputter;
 
 /**
  *
- * @author GeorgiaLR
  */
-public class Csv2Xml {
+public class CsvToXml {
     
     /**
      * 
-     * @param csvFile
+     * @param csvPath
      * @return 
      */
-    public static String initiateXml(String csvFile) {
-        String filePath = "";
+    public static String initiateXml(String csvPath) {
+
         String fileName = "";
         String xmlFile = "";
         String newPath = "";
+
+        File csvFile = new File(csvPath);
+        String csvDirectory = csvFile.getParent();
+        System.out.println("csvDirectory : " + csvDirectory);
         
         try {
-            String fileNameExt = FilenameUtils.getName(csvFile);
-            filePath = FilenameUtils.getPath(csvFile);
-            System.out.println(filePath);
+
+            String fileNameExt = FilenameUtils.getName(csvPath);
+
             fileName = FilenameUtils.removeExtension(fileNameExt);
             xmlFile = fileName + ".xml";
             System.out.println(xmlFile);
@@ -51,34 +54,37 @@ public class Csv2Xml {
             // --- Ecriture sur le DD dans le document XML
             // --- du contenu de l'arbre DOM qui est en RAM
             XMLOutputter endOne = new XMLOutputter(Format.getPrettyFormat());
-            endOne.output(treeDom, new FileOutputStream(filePath + xmlFile));
+            endOne.output(treeDom, new FileOutputStream(csvDirectory + xmlFile));
 
             System.out.println("Fichier XML créé");
 
         } catch (IOException e) {
             System.err.println(e.getMessage());
         }
-        newPath = filePath + xmlFile;
+        newPath = csvDirectory + File.separator + xmlFile;
         return newPath;
     }
 
     /**
      *
-     * @param csvFile
+     * @param csvPath
      * @param lsSeparator
      */
-    public static void convertDatastoData(String csvFile, String lsSeparator) {
+    public static String convertCsvToXmlWithAttributes(String csvPath, String lsSeparator) {
+
+        String newPath = "";
 
         try {
 
-            FileReader lfrFichier = new FileReader(csvFile);
+            FileReader lfrFichier = new FileReader(csvPath);
             BufferedReader lbrBuffer = new BufferedReader(lfrFichier);
             String lsLigne;
             String lsEntetes = lbrBuffer.readLine();
             String[] tEntetes = lsEntetes.split(lsSeparator);
             int sEntetes = tEntetes.length;
             
-            String newPath = Csv2Xml.initiateXml(csvFile);
+            newPath = CsvToXml.initiateXml(csvPath);
+            System.out.println("new Path : " + newPath);
             
             // --- Creation du document avec sa racine
             SAXBuilder sxb = new SAXBuilder();
@@ -121,25 +127,29 @@ public class Csv2Xml {
         catch (IOException | JDOMException e) {
             System.err.println(e.getMessage());
         }
+        return newPath;
     }
 
     /**
      *
-     * @param csvFile
+     * @param csvPath
      * @param lsSeparator
      */
-    public static void convertDatastoDoc(String csvFile, String lsSeparator) {
+    public static String convertCsvToXmlWithElements(String csvPath, String lsSeparator) {
+
+        String newPath = "";
 
         try {
 
-            FileReader lfrFichier = new FileReader(csvFile);
+            FileReader lfrFichier = new FileReader(csvPath);
             BufferedReader lbrBuffer = new BufferedReader(lfrFichier);
 
             String lsLigne;
             String lsEntetes = lbrBuffer.readLine();
             String[] tEntetes = lsEntetes.split(lsSeparator);
 
-           String newPath = Csv2Xml.initiateXml(csvFile);
+           newPath = CsvToXml.initiateXml(csvPath);
+           System.out.println("new Path : " + newPath);
            
             // --- Creation du document avec sa racine
             SAXBuilder sxb = new SAXBuilder();
@@ -189,6 +199,6 @@ public class Csv2Xml {
         catch (IOException | JDOMException e) {
             System.err.println(e.getMessage());
         }
-
+        return newPath;
     }
 }

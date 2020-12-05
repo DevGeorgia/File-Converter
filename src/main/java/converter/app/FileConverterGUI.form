@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="converter.app.FileConverterGUI">
+  <grid id="27dc6" binding="mainPanel" layout-manager="GridLayoutManager" row-count="8" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+    <margin top="10" left="10" bottom="10" right="10"/>
+    <constraints>
+      <xy x="20" y="20" width="569" height="400"/>
+    </constraints>
+    <properties>
+      <preferredSize width="350" height="450"/>
+    </properties>
+    <border type="none"/>
+    <children>
+      <component id="e004b" class="javax.swing.JLabel" binding="currentFormatLabel">
+        <constraints>
+          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <labelFor value="5b18c"/>
+          <text value="Current format :"/>
+        </properties>
+      </component>
+      <component id="b4e9e" class="javax.swing.JLabel" binding="consoleLabel">
+        <constraints>
+          <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <labelFor value="edfd8"/>
+          <text value="Console :"/>
+        </properties>
+      </component>
+      <component id="8bfb5" class="javax.swing.JLabel" binding="expectedFormatLabel">
+        <constraints>
+          <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <labelFor value="96b0d"/>
+          <text value="Expected format :"/>
+        </properties>
+      </component>
+      <component id="a595d" class="javax.swing.JLabel" binding="browseFileLabel">
+        <constraints>
+          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Select a file to convert :"/>
+        </properties>
+      </component>
+      <component id="e81ce" class="javax.swing.JButton" binding="convertButton">
+        <constraints>
+          <grid row="5" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Convert"/>
+        </properties>
+      </component>
+      <component id="28cb0" class="javax.swing.JButton" binding="browseFileButton">
+        <constraints>
+          <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Browse ..."/>
+        </properties>
+      </component>
+      <component id="5b18c" class="javax.swing.JTextField" binding="currentFormatText">
+        <constraints>
+          <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="-1"/>
+          </grid>
+        </constraints>
+        <properties>
+          <editable value="false"/>
+        </properties>
+      </component>
+      <component id="af4a" class="javax.swing.JTextField" binding="allowedFormatText">
+        <constraints>
+          <grid row="2" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="-1"/>
+          </grid>
+        </constraints>
+        <properties>
+          <editable value="false"/>
+          <enabled value="true"/>
+          <text value="Allowed format : .csv, .json, .xml"/>
+        </properties>
+      </component>
+      <component id="b985a" class="javax.swing.JLabel" binding="csvSeparatorLabel">
+        <constraints>
+          <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
+            <preferred-size width="140" height="16"/>
+          </grid>
+        </constraints>
+        <properties>
+          <text value="Select your csv separator :"/>
+          <visible value="false"/>
+        </properties>
+      </component>
+      <component id="96b0d" class="javax.swing.JComboBox" binding="expectedFormatBox">
+        <constraints>
+          <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="2" anchor="8" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <model/>
+        </properties>
+      </component>
+      <component id="e8079" class="javax.swing.JTextField" binding="csvSeparatorText">
+        <constraints>
+          <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="-1"/>
+          </grid>
+        </constraints>
+        <properties>
+          <autoscrolls value="true"/>
+          <text value=";"/>
+          <visible value="false"/>
+        </properties>
+      </component>
+      <component id="edfd8" class="javax.swing.JTextArea" binding="consoleText">
+        <constraints>
+          <grid row="7" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="3" indent="0" use-parent-layout="false">
+            <preferred-size width="300" height="-1"/>
+          </grid>
+        </constraints>
+        <properties>
+          <editable value="false"/>
+          <text value=""/>
+          <wrapStyleWord value="false"/>
+        </properties>
+      </component>
+    </children>
+  </grid>
+</form>

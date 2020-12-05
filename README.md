@@ -2,11 +2,11 @@
 Easily convert simple csv, json and xml
 
 ## Done
-Csv2Json
-Csv2Xml
+* csv to json
+* csv to xml
 
 ## To Do
-Json2Csv
-Json2Xml
-Xml2Csv
-Xml2Json
+* json to csv
+* json to xml
+* xml to csv
+* xml to json
