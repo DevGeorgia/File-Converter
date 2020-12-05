@@ -1,4 +1,4 @@
-# FileConvertLib
+# File Converter
 Easily convert simple csv, json and xml
 
 ## Done
